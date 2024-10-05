@@ -1,15 +1,19 @@
-<!-- Add the header ejs template to get our CSS loaded -->
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/header') %>
 
+  <body>
     <!-- Display question or whatever else here -->
-    <h1>Math Quiz</h1>
-    <p>Answer the question below:</p>
+    <main class="main-content">
+      <h1>Math Quiz</h1>
+      <p>Answer the question below:</p>
 
-    <form action="/quiz" method="POST">
+      <form action="/quiz" method="POST">
         <!-- This handles sending the user's answer back to the server. It's not recommended you modify this, as you shouldn't need to -->
         <label for="answer">Your Answer:</label>
-        <input type="text" id="answer" name="answer" required>
+        <input type="text" id="answer" name="answer" required />
         <button type="submit">Submit</button>
-    </form>
-</body>
+      </form>
+    </main>
+  </body>
 </html>
