@@ -1,4 +1,5 @@
 const express = require("express");
+const { getQuestion, correctAnswer } = require("./utils/mathUtilities");
 const app = express();
 const port = 3000;
 
@@ -6,13 +7,17 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
 app.use(express.static("public")); // To serve static files (e.g., CSS)
 
+const currentStreak = 0;
+//const currentQuestion;
+
 //Some routes required for full functionality are missing here. Only get routes should be required
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 app.get("/quiz", (req, res) => {
-  res.render("quiz");
+  currentQuestion = getQuestion();
+  res.render("quiz", { question: currentQuestion });
 });
 
 app.get("/quizCompletion", (req, res) => {
@@ -27,11 +32,14 @@ app.get("/leaderboards", (req, res) => {
 app.post("/quiz", (req, res) => {
   const { answer } = req.body;
   console.log(`Answer: ${answer}`);
+  const isCorrect = correctAnswer(currentQuestion, Number(answer));
 
-  //answer will contain the value the user entered on the quiz page
-  //Logic must be added here to check if the answer is correct, then track the streak and redirect properly
-  //By default we'll just redirect to the homepage again.
-  res.redirect("/");
+  if (isCorrect) {
+    currentStreak++;
+  } else {
+    currentStreak = 0;
+  }
+  res.render("quizCompletion", { streak: currentStreak });
 });
 
 // Start the server
