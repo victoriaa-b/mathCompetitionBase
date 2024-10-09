@@ -4,14 +4,13 @@
 
   <body>
     <!-- Display question or whatever else here -->
-    <main class="main-content">
+    <main class="mainContent">
       <h1>Math Quiz</h1>
       <p>Answer the question below:</p>
       <p>
         What is <%= question.num1 %> <%= question.operations %> <%=
         question.num2 %>?
       </p>
-      <!-- reminder the red needs to be there -->
       <form action="/quiz" method="POST">
         <!-- This handles sending the user's answer back to the server. It's not recommended you modify this, as you shouldn't need to -->
         <label for="answer">Your Answer:</label>

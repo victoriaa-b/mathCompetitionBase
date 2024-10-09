@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/header') %>
-  <h1>You have completed the quiz!</h1>
+  <body>
+    <div class="mainContent">
+      <% if (isCorrect) { %>
+      <p>
+        Congratulations! Your answer was correct!
+        <br />You have completed the quiz!
+      </p>
+      <% } else { %>
+      <p>Oops! The answer was incorrect. Try again!</p>
+      <% } %>
+      <p>Your current streak is: <%= streak %></p>
+    </div>
+  </body>
 </html>
+
+<!-- appears  -->
+<!-- what to know if it is corrent or not-->

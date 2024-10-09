@@ -5,10 +5,10 @@ const port = 3000;
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true })); // For parsing form data
-app.use(express.static("public")); // To serve static files (e.g., CSS)
+app.use(express.static("public"));
 
-const currentStreak = 0;
-//const currentQuestion;
+let currentStreak = 0; // cant be const as it needs to change
+let currentQuestion;
 
 //Some routes required for full functionality are missing here. Only get routes should be required
 app.get("/", (req, res) => {
@@ -39,7 +39,7 @@ app.post("/quiz", (req, res) => {
   } else {
     currentStreak = 0;
   }
-  res.render("quizCompletion", { streak: currentStreak });
+  res.render("quizCompletion", { streak: currentStreak, isCorrect }); // need isCorrect or it wont check
 });
 
 // Start the server
