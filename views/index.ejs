@@ -22,7 +22,11 @@
           Check The Leaderboards
         </a>
       </div>
-      <p>The lastest streak:</p>
+      <% if (latestStreak > 0) { %>
+      <p>Your latest streak is: <strong><%= latestStreak %></strong></p>
+      <% } else { %>
+      <p>Start the quiz to build your streak!</p>
+      <% } %>
     </main>
   </body>
 </html>

@@ -2,19 +2,27 @@
 <html lang="en">
   <%- include('partials/header') %>
   <body>
-    <div class="mainContent">
+    <div class="mainContent index_container">
       <% if (isCorrect) { %>
       <p>
         Congratulations! Your answer was correct!
         <br />You have completed the quiz!
       </p>
+
+      <p>Please enter your name for the leaderboard:</p>
+      <form action="/leaderboards" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+        <input type="hidden" name="streak" value="<%= streak %>" />
+        <button type="submit">Save</button>
+      </form>
+
       <% } else { %>
       <p>Oops! The answer was incorrect. Try again!</p>
       <% } %>
+
       <p>Your current streak is: <%= streak %></p>
+      <a href="/"> Home</a>
     </div>
   </body>
 </html>
-
-<!-- appears  -->
-<!-- what to know if it is corrent or not-->
