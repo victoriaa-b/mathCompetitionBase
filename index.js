@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getQuestion,
   correctAnswer,
-  addLeaderboardRecord,
+  resetStreak,
 } = require("./utils/mathUtilities");
 const app = express();
 const port = 3000;
@@ -27,34 +27,35 @@ app.get("/quiz", (req, res) => {
 });
 
 app.get("/quizCompletion", (req, res) => {
-  res.render("quizCompletion"); // check
+  res.render("quizCompletion", { streak: currentStreak });
 });
 
 app.get("/leaderboards", (req, res) => {
-  leaderboards.sort((a, b) => b.streak - a.streak);
-  res.render("leaderboards", { leaderboards });
+  const sortedLeaderboards = leaderboards.sort((a, b) => b.streak - a.streak);
+  res.render("leaderboards", { leaderboards: sortedLeaderboards });
 });
 
 //Handles quiz submissions.
 app.post("/quiz", (req, res) => {
   const { answer } = req.body;
-  console.log(`Answer: ${answer}`);
+
   const isCorrect = correctAnswer(currentQuestion, Number(answer));
 
   if (isCorrect) {
     currentStreak++;
     latestStreak = currentStreak;
+    res.render("quizCompletion", { streak: currentStreak, isCorrect: true });
   } else {
+    resetStreak(); //// check reset
     currentStreak = 0;
+    res.render("quizCompletion", { streak: 0, isCorrect: false });
   }
-  res.render("quizCompletion", { streak: currentStreak, isCorrect }); // need isCorrect or it wont check
 });
 
 app.post("/leaderboards", (req, res) => {
   const { name, streak } = req.body;
-
+  leaderboards.push({ name, streak });
   res.redirect("/leaderboards");
-  addLeaderboardRecord(name, streak);
 });
 
 // Start the server

@@ -53,3 +53,14 @@ p {
   font-size: 1.5em;
   line-height: 1.5;
 }
+
+a.homeLink {
+  background-color: #ffffff;
+  color: #a480cf;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 20px;
+}

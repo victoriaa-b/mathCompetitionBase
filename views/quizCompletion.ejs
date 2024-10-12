@@ -4,25 +4,23 @@
   <body>
     <div class="mainContent index_container">
       <% if (isCorrect) { %>
-      <p>
-        Congratulations! Your answer was correct!
-        <br />You have completed the quiz!
-      </p>
-
-      <p>Please enter your name for the leaderboard:</p>
+      <p>Congratulations! Your answer was correct!</p>
+      <p>Your current streak is: <%= streak %></p>
+      <p>Please enter your name below for the leaderboard:</p>
       <form action="/leaderboards" method="POST">
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required />
         <input type="hidden" name="streak" value="<%= streak %>" />
         <button type="submit">Save</button>
       </form>
-
+      <form action="/quiz" method="GET">
+        <button type="submit">Next Question</button>
+      </form>
       <% } else { %>
-      <p>Oops! The answer was incorrect. Try again!</p>
+      <p>Oops! The answer you entered was incorrect.</p>
+      <p>Your streak is now: 0</p>
       <% } %>
-
-      <p>Your current streak is: <%= streak %></p>
-      <a href="/"> Home</a>
+      <a href="/" class="homeLink">Return to Home</a>
     </div>
   </body>
 </html>

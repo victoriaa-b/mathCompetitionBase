@@ -42,18 +42,13 @@ function correctAnswer(question, answer) {
   return answer === correctAnswer; // return answer
 }
 
-// need to set logic for the leaderboard
-let leaderboards = [];
-function addLeaderboardRecord(name, streak) {
-  const newRecord = { name, streak }; // need to keep track of all of the inputs
-  leaderboards.push(newRecord);
-  leaderboards.sort((a, b) => b.streak - a.streak);
-
-  return leaderboards;
+let currentStreak = 0;
+function resetStreak() {
+  currentStreak = 0;
 }
-
 module.exports = {
   getQuestion,
   correctAnswer,
-  addLeaderboardRecord,
+  resetStreak,
+  currentStreak,
 };

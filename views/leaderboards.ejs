@@ -5,6 +5,16 @@
     <main class="mainContent">
       <h1>Leaderboards</h1>
       <!-- only want to put info if they start a streak, anything over one-->
+      <% if (leaderboards.length > 0) { %>
+      <ol>
+        <% leaderboards.forEach(record => { %>
+        <li><%= record.name %>: <%= record.streak %></li>
+        <% }); %>
+      </ol>
+      <% } else { %>
+      <p>No streaks have been recorded</p>
+      <% } %>
+      <a href="/" class="homeLink">Return to Home</a>
     </main>
   </body>
 </html>
