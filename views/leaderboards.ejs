@@ -4,13 +4,23 @@
   <body>
     <main class="mainContent">
       <h1>Leaderboards</h1>
-      <!-- only want to put info if they start a streak, anything over one-->
       <% if (leaderboards.length > 0) { %>
-      <ol>
-        <% leaderboards.forEach(record => { %>
-        <li><%= record.name %>: <%= record.streak %></li>
+      <table class="leaderboardTable">
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Streak</th>
+          <th>Date Recorded</th>
+        </tr>
+        <% leaderboards.forEach((record, index) => { %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= record.name %></td>
+          <td><%= record.streak %></td>
+          <td><%= record.dateRecorded %></td>
+        </tr>
         <% }); %>
-      </ol>
+      </table>
       <% } else { %>
       <p>No streaks have been recorded</p>
       <% } %>

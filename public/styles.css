@@ -16,12 +16,12 @@ body {
   flex-direction: column;
 }
 
-.index_container .navigation__container {
+.indexContainer .navigationContainer {
   display: flex;
   flex-direction: row;
 }
 
-.index_container .navigation__container a {
+.indexContainer .navigationContainer a {
   background-color: #ffffff;
   aspect-ratio: 1;
   display: flex;
@@ -32,19 +32,16 @@ body {
   border-radius: 5px;
   margin-right: 20px;
   font-size: 25px;
+  color: #4895ef;
 }
 
-.index_container .navigation__container a:link {
+.indexContainer .navigationContainer a:link {
   color: #a480cf;
   text-decoration: none;
 }
 
-.index_container .navigation__container a:visited {
+.indexContainer .navigationContainer a:visited {
   text-decoration: none;
-}
-
-.index_container .navigation__container :last-child {
-  margin-right: 0px;
 }
 
 p {
@@ -56,11 +53,45 @@ p {
 
 a.homeLink {
   background-color: #ffffff;
-  color: #a480cf;
+  color: #4895ef;
   display: inline-block;
   padding: 15px 30px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 20px;
-  margin-top: 20px;
+  margin-top: 70px;
+}
+a.bothLinks {
+  background-color: #ffffff;
+  color: #4895ef;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 20px 10px 0;
+}
+
+.leaderboardTable {
+  border-collapse: collapse;
+  border-radius: 10px;
+  width: 90%;
+  margin: 5px auto;
+  overflow: hidden;
+}
+.leaderboardTable th,
+.leaderboardTable td {
+  padding: 20px;
+  text-align: left;
+}
+
+.leaderboardTable th {
+  background-color: #4895ef;
+  color: white;
+  font-size: 18px;
+}
+
+.button {
+  color: #4895ef;
+  border: 1px solid #a480cf;
 }

@@ -54,7 +54,10 @@ app.post("/quiz", (req, res) => {
 
 app.post("/leaderboards", (req, res) => {
   const { name, streak } = req.body;
-  leaderboards.push({ name, streak });
+  const dateRecorded = new Date().toLocaleDateString();
+
+  leaderboards.push({ name, streak, dateRecorded });
+  leaderboards = leaderboards.slice(0, 10); // only want the top ten streaks
   res.redirect("/leaderboards");
 });
 

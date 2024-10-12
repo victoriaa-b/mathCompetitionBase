@@ -8,19 +8,22 @@
       <p>Your current streak is: <%= streak %></p>
       <p>Please enter your name below for the leaderboard:</p>
       <form action="/leaderboards" method="POST">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required />
-        <input type="hidden" name="streak" value="<%= streak %>" />
-        <button type="submit">Save</button>
+        <div class="inputForm">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required />
+          <input type="hidden" name="streak" value="<%= streak %>" />
+          <button type="submit" class="button">Save</button>
+        </div>
       </form>
-      <form action="/quiz" method="GET">
-        <button type="submit">Next Question</button>
-      </form>
+      <div class="linkContainer">
+        <a href="/quiz" class="bothLinks">Start New Quiz</a>
+        <a href="/" class="bothLinks">Return to Home</a>
+      </div>
       <% } else { %>
       <p>Oops! The answer you entered was incorrect.</p>
       <p>Your streak is now: 0</p>
-      <% } %>
       <a href="/" class="homeLink">Return to Home</a>
+      <% } %>
     </div>
   </body>
 </html>
