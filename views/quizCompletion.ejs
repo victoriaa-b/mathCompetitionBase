@@ -3,9 +3,12 @@
   <%- include('partials/header') %>
   <body>
     <div class="mainContent index_container">
+          <!-- Checks if the answer is correct or incorrent-->
+         
       <% if (isCorrect) { %>
       <p>Congratulations! Your answer was correct!</p>
       <p>Your current streak is: <%= streak %></p>
+          <!-- Only appears if answer is correct -->
       <p>Please enter your name below for the leaderboard:</p>
       <form action="/leaderboards" method="POST">
         <div class="inputForm">
@@ -20,6 +23,7 @@
         <a href="/" class="bothLinks">Return to Home</a>
       </div>
       <% } else { %>
+            <!-- Answer is incorrect so streak is reset-->
       <p>Oops! The answer you entered was incorrect.</p>
       <p>Your streak is now: 0</p>
       <a href="/" class="homeLink">Return to Home</a>
