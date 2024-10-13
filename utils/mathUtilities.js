@@ -42,9 +42,9 @@ function correctAnswer(question, answer) {
   return answer === correctAnswer; // return answer
 }
 
-let currentStreak = 0;
+let currentStreak = {value: 0 };
 function resetStreak() {
-  currentStreak = 0;
+  currentStreak.value = 0;
 }
 module.exports = {
   getQuestion,

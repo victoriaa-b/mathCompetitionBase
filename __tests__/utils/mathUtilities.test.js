@@ -51,12 +51,14 @@ describe("Tests for getQuestion", () => {
   });
 });
 
-// failing
-
 describe("Tests for resetStreak", () => {
   test("This will reset the currentStreak back to zero", () => {
-    currentStreak = 2;
+    currentStreak.value = 2;
     resetStreak();
-    expect(currentStreak).toBe(0);
+    expect(currentStreak.value).toBe(0);
+
+    currentStreak.value = 20;
+    resetStreak();
+    expect(currentStreak.value).toBe(0);
   });
 });
